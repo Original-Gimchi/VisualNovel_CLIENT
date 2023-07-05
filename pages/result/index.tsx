@@ -20,7 +20,7 @@ export default function Result() {
   ];
   return (
     <Frame>
-      <div className="flex flex-col gap-9 mt-9">
+      <div className="flex flex-col gap-9 my-9">
         <div>
           <div className="flex items-center gap-4 text-4xl font-black">
             <ThinkingIcon />
@@ -35,8 +35,11 @@ export default function Result() {
           <p className="mb-2">회사가 원하는 해시태그</p>
           <Category.Group categorys={categorys} />
         </div>
-        <TextArea label="나의 자기소개서" isClipBoard />
-        <TextArea label="구글과 나" isClipBoard />
+      </div>
+      <TextArea label="나의 자기소개서" isClipBoard />
+      <div className="h-5" />
+      <TextArea label="구글과 나" isClipBoard />
+      <div className="flex justify-center my-5">
         <Button>완료하기</Button>
       </div>
     </Frame>
