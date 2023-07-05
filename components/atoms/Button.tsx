@@ -6,6 +6,6 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-export default function Button({ className, disabled = false, ...props }: ButtonProps) {
+export default function Button({ className, varient = 'primary', disabled = false, ...props }: ButtonProps) {
   return <button className={classNames('px-20 py-3 bg-secondary text-white rounded-full', className)} {...props} />;
 }
