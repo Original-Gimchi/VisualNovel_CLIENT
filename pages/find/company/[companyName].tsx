@@ -3,6 +3,7 @@ import Category from "@/components/atoms/Category";
 import Frame from "@/components/atoms/Frame";
 import ThinkingIcon from "@/components/icons/ThinkingIcon";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Analize() {
@@ -34,30 +35,34 @@ export default function Analize() {
     "웹싸개",
   ];
 
+  const router = useRouter();
+
   const [wordcloudUrl, setWordcloudUrl] = useState("");
 
   useEffect(() => {
-    httpClient.wordcloud
-      .post(
-        {
-          content:
-            "급구 니더 화이팅 안녕하세요 반갑습니다 테스트 이창보 화이팅",
-        },
-        {
-          baseURL: "http://192.168.10.253:8001/wordcloud",
-        }
-      )
-      .then((r) => {
-        setWordcloudUrl(r.data.url);
-      });
-  }, []);
+    if (router.isReady)
+      httpClient.wordcloud
+        .post(
+          {
+            content: router.query.companyName,
+          },
+          {
+            baseURL: "http://192.168.10.253:8001/wordcloud",
+          }
+        )
+        .then((r) => {
+          setWordcloudUrl(r.data.url);
+        });
+  }, [router]);
 
   return (
     <Frame>
       <div className="pt-9">
         <div className="flex gap-4 items-center">
           <ThinkingIcon />
-          <span className="text-4xl font-black">내 기업 분석</span>
+          <span className="text-4xl font-black">
+            내 기업 분석 ({router.query.companyName})
+          </span>
         </div>
 
         <div className="flex items-center justify-between">
@@ -76,13 +81,13 @@ export default function Analize() {
 
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-2">
-            <p className="">한줄소개</p>
+            <p className="mt-6">기업 한줄소개</p>
             <p className="p-5 bg-white">
               어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고
             </p>
           </div>
           <div className="flex flex-col gap-2 mt-3">
-            <p className="">전체소개</p>
+            <p className="">기업 전체소개</p>
             <p className="p-5 bg-white">
               어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고
             </p>

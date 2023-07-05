@@ -5,8 +5,10 @@ import React from "react";
 import Face from "@/assets/face.png";
 import Button from "@/components/atoms/Button";
 import httpClient from "@/apis";
+import { useRouter } from "next/router";
 
 const Company = () => {
+  const router = useRouter();
   const [categoryInput, setCategoryInput] = React.useState("");
   const [categories, setCategories] = React.useState<string[]>([]);
   const onEnterAddHashtag = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -78,21 +80,24 @@ const Company = () => {
         >
           <div className="w-full flex items-center">
             <span className="text-[1.5rem] font-[700] ">아이오테크</span>
-            <span className="text-[12px] ml-auto text-[gray] cursor-pointer">
+            <span
+              className="text-[12px] ml-auto text-[gray] cursor-pointer"
+              onClick={() =>
+                router.push(`/find/company/${"아이오테크"}`)
+              }
+            >
               자세히보기 {">"}
             </span>
           </div>
-          <div className="flex gap-[12px]">
-            {[
+          <Category.Group
+            categorys={[
               "산업자동화",
               "데이터획득",
               "제어솔루션",
               "센서기술",
               "실험연구",
-            ].map((tag) => (
-              <Category.Chip key={tag}>#{tag}</Category.Chip>
-            ))}
-          </div>
+            ]}
+          />
           <p className="text-[14px] mt-[12px]">
             산업 자동화 및 실험 연구 분야에서 측정, 제어 솔루션을 제공하는
             대한민국 중소기업
