@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import Face from "@/assets/face.png";
 import Button from "@/components/atoms/Button";
+import httpClient from "@/apis";
 
 const Company = () => {
   const [categoryInput, setCategoryInput] = React.useState("");
@@ -20,6 +21,10 @@ const Company = () => {
     setCategories(
       categories.filter((category) => category !== categories[index])
     );
+  };
+
+  const handleCompanySearch = () => {
+    httpClient.company.fit({ params: { keyword: categories.join(",") } });
   };
 
   return (
@@ -60,7 +65,10 @@ const Company = () => {
           </Category.Chip>
         ))}
       </div>
-      <Button className="mr-auto ml-[30%] w-[220px] h-[42px] text-[14px]">
+      <Button
+        className="mr-auto ml-[30%] w-[220px] h-[42px] text-[14px]"
+        onClick={handleCompanySearch}
+      >
         찾아보기
       </Button>
       {[1, 2, 3].map((index) => (
