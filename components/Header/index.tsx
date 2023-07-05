@@ -2,6 +2,7 @@ import useModal from "@/hooks/useModal";
 import { useRouter } from "next/router";
 import LoginModal from "../Modal/LoginModal";
 import SignupModal from "../Modal/SignupModal";
+import { Storage } from "@/storage";
 
 export default function Header() {
   const router = useRouter();
@@ -22,22 +23,28 @@ export default function Header() {
           자기소개서 작성
         </li>
         <li className="cursor-pointer">가입 정보</li>
-        <li
-          className="cursor-pointer p-1 bg-primary text-white"
-          onClick={() =>
-            openModal({ title: "로그인", content: <LoginModal /> })
-          }
-        >
-          로그인
-        </li>
-        <li
-          className="cursor-pointer p-1 bg-primary text-white"
-          onClick={() =>
-            openModal({ title: "회원가입", content: <SignupModal /> })
-          }
-        >
-          회원가입
-        </li>
+        {Storage.getItem("ACCESS_TOKEN") ? (
+          <>
+            <li
+              className="cursor-pointer p-1 bg-primary text-white"
+              onClick={() =>
+                openModal({ title: "로그인", content: <LoginModal /> })
+              }
+            >
+              로그인
+            </li>
+            <li
+              className="cursor-pointer p-1 bg-primary text-white"
+              onClick={() =>
+                openModal({ title: "회원가입", content: <SignupModal /> })
+              }
+            >
+              회원가입
+            </li>
+          </>
+        ) : (
+          <li className="cursor-pointer p-1 bg-primary text-white">로그아웃</li>
+        )}
       </ul>
     </header>
   );

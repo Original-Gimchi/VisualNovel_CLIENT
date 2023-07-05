@@ -5,7 +5,7 @@ import httpClient from "@/apis";
 import { toast } from "react-toastify";
 
 export interface SignupForm {
-  ninkName: string;
+  nickName: string;
   email: string;
   password: string;
   belonging: string;
@@ -27,7 +27,7 @@ export default function SignupModal() {
         label="닉네임"
         className="border border-primary"
         placeholder="닉네임을 입력해주세요."
-        registerReturn={register("ninkName")}
+        registerReturn={register("nickName")}
       />
       <Input
         label="이메일"
