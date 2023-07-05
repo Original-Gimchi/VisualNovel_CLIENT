@@ -40,7 +40,7 @@ function ModalView({ title, content, visible, onClose }: ModalViewProps) {
           </div>
         ) : null}
 
-        <div className="flex flex-col mt-6 gap-2.5 px-10">{content}</div>
+        <div className="flex flex-col gap-2.5 px-10">{content}</div>
       </div>
     </>
   );

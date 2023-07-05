@@ -62,6 +62,13 @@ export class HttpClient {
     });
   }
 
+  signup(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.post("/signup", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   delete(requestConfig?: AxiosRequestConfig) {
     return this.api.delete("", {
       ...HttpClient.clientConfig,
@@ -71,41 +78,6 @@ export class HttpClient {
 
   self(requestConfig?: AxiosRequestConfig) {
     return this.api.get("/self", {
-      ...HttpClient.clientConfig,
-      ...requestConfig,
-    });
-  }
-
-  sequence(data: unknown, requestConfig?: AxiosRequestConfig) {
-    return this.api.put("/sequence", data, {
-      ...HttpClient.clientConfig,
-      ...requestConfig,
-    });
-  }
-
-  bookmark(data: unknown, requestConfig?: AxiosRequestConfig) {
-    return this.api.put("/bookmark", data, {
-      ...HttpClient.clientConfig,
-      ...requestConfig,
-    });
-  }
-
-  unfollow(requestConfig?: AxiosRequestConfig) {
-    return this.api.delete("/unfollow", {
-      ...HttpClient.clientConfig,
-      ...requestConfig,
-    });
-  }
-
-  video(data: unknown, requestConfig?: AxiosRequestConfig) {
-    return this.api.post("/video", data, {
-      ...HttpClient.clientConfig,
-      ...requestConfig,
-    });
-  }
-
-  image(data: unknown, requestConfig?: AxiosRequestConfig) {
-    return this.api.post("/image", data, {
       ...HttpClient.clientConfig,
       ...requestConfig,
     });
@@ -139,5 +111,5 @@ const axiosConfig: HttpClientConfig = {
 };
 
 export default {
-  wordcloud: new HttpClient("/api/wordcloud", axiosConfig),
+  user: new HttpClient("/api/user", axiosConfig),
 };
