@@ -14,6 +14,22 @@ export default function Analize() {
     "웹싸개",
     "개발싸개",
     "웹싸개",
+    "개발싸개",
+    "웹싸개",
+    "개발싸개",
+    "웹싸개",
+    "개발싸개",
+    "웹싸개",
+    "개발싸개",
+    "웹싸개",
+    "개발싸개",
+    "웹싸개",
+    "개발싸개",
+    "웹싸개",
+    "개발싸개",
+    "웹싸개",
+    "개발싸개",
+    "웹싸개",
   ];
   return (
     <Frame>
@@ -29,12 +45,7 @@ export default function Analize() {
             <Category.Group categorys={categorys} />
           </div>
           <div className="whitespace-nowrap">
-            <Image
-              src="/images/wc.png"
-              alt="dd"
-              width={300}
-              height={300}
-            />
+            <Image src="/images/wc.png" alt="dd" width={300} height={300} />
           </div>
         </div>
 
