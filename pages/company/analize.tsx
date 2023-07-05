@@ -1,7 +1,9 @@
+import httpClient from "@/apis";
 import Category from "@/components/atoms/Category";
 import Frame from "@/components/atoms/Frame";
 import ThinkingIcon from "@/components/icons/ThinkingIcon";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Analize() {
   const categorys = [
@@ -32,6 +34,21 @@ export default function Analize() {
     "웹싸개",
   ];
 
+  const [wordcloudUrl, setWordcloudUrl] = useState("");
+
+  useEffect(() => {
+    httpClient.wordcloud
+      .post(
+        { content: "급구 니더 화이팅 안녕하세요 반갑습니다 테스트 이창보 화이팅" },
+        {
+          baseURL: "http://192.168.10.253:8001/wordcloud",
+        }
+      )
+      .then((r) => {
+        setWordcloudUrl(r.data.url);
+      });
+  }, []);
+
   return (
     <Frame>
       <div className="pt-9">
@@ -46,7 +63,11 @@ export default function Analize() {
             <Category.Group categorys={categorys} />
           </div>
           <div className="whitespace-nowrap">
-            <Image src="/images/wc.png" alt="dd" width={300} height={300} />
+            {wordcloudUrl ? (
+              <Image src={wordcloudUrl} alt="dd" width={300} height={300} />
+            ) : (
+              <div className="w-72 h-72" />
+            )}
           </div>
         </div>
 

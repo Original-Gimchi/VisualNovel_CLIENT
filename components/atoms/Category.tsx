@@ -13,7 +13,7 @@ function Chip({ className, disabled = false, ...props }: CategoryProps) {
         boxShadow: "0 0 4px 0 rgba(0, 0, 0, 0.1)",
       }}
       className={classNames(
-        "px-[12px] py-[4px] rounded-[999px] bg-black-500 bg-[#f7f8fa] whitespace-nowrap",
+        "px-[12px] py-[4px] rounded-[999px] bg-black-500 bg-white whitespace-nowrap",
         "text-[12px] font-[600] text-[gray]",
         className
       )}
@@ -29,8 +29,8 @@ interface GroupProps {
 function Group({ categorys }: GroupProps) {
   return (
     <div className="flex flex-wrap gap-2">
-      {categorys.map((category) => (
-        <Chip key={category}>{category}</Chip>
+      {categorys.map((category, idx) => (
+        <Chip key={idx}>{category}</Chip>
       ))}
     </div>
   );
