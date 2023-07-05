@@ -15,7 +15,7 @@ export default function Button({
   return (
     <button
       className={classNames(
-        "px-20 py-3 bg-secondary text-white rounded-full",
+        "px-20 py-3 bg-secondary text-white rounded-full whitespace-nowrap",
         className
       )}
       {...props}
