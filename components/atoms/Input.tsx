@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { InputHTMLAttributes, useRef } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   isClipboard?: boolean;
 }
 

@@ -1,7 +1,7 @@
 import Button from '@/components/atoms/Button';
+import Modal from '@/components/atoms/Modal';
 import React from 'react';
 import Link from 'next/link';
-import Modal from '@/components/atoms/Modal';
 
 const Home = () => {
   return (
