@@ -34,6 +34,20 @@ export class HttpClient {
     });
   }
 
+  getByName(requestConfig?: AxiosRequestConfig) {
+    return this.api.get("/:name", {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
+  fit(requestConfig?: AxiosRequestConfig) {
+    return this.api.get("/fit", {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   post(data: unknown, requestConfig?: AxiosRequestConfig) {
     return this.api.post("", data, {
       ...HttpClient.clientConfig,
@@ -114,10 +128,13 @@ export class HttpClient {
 
 const axiosConfig: HttpClientConfig = {
   baseURL: config.baseURL,
-  timeout: 10000,
+  timeout: 9999999999999,
 };
 
 export default {
+  company: new HttpClient("/api/company", axiosConfig),
+  companyFind: new HttpClient("/api/company/find", axiosConfig),
   user: new HttpClient("/api/user", axiosConfig),
+  wordcloud: new HttpClient("/api/wordcloud", axiosConfig),
   auth: new HttpClient("/api/auth", axiosConfig),
 };
