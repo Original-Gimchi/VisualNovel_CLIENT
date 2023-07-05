@@ -31,6 +31,7 @@ export default function Analize() {
     "개발싸개",
     "웹싸개",
   ];
+
   return (
     <Frame>
       <div className="pt-9">
