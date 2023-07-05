@@ -37,7 +37,7 @@ export default function TextArea({
       />
       {isClipBoard && (
         <div
-          className="absolute top-4 right-4"
+          className={classNames("absolute top-4 right-4", { "!top-12": label })}
           onClick={() => copy(textareaRef.current?.value || "")}
         >
           <ClipboardIcon />
