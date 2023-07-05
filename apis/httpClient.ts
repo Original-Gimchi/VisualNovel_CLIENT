@@ -34,6 +34,13 @@ export class HttpClient {
     });
   }
 
+  getByName(requestConfig?: AxiosRequestConfig) {
+    return this.api.get("/:name", {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   post(data: unknown, requestConfig?: AxiosRequestConfig) {
     return this.api.post("", data, {
       ...HttpClient.clientConfig,
@@ -118,6 +125,7 @@ const axiosConfig: HttpClientConfig = {
 };
 
 export default {
+  company: new HttpClient("/api/company", axiosConfig),
   user: new HttpClient("/api/user", axiosConfig),
   auth: new HttpClient("/api/auth", axiosConfig),
 };
