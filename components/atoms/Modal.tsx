@@ -30,7 +30,7 @@ function ModalView({ title, content, visible, onClose }: ModalViewProps) {
           { hidden: !visible },
           { 'rounded-lg': title },
           { 'rounded-3xl': !title },
-          'fixed top-1/2 left-1/2 flex flex-col bg-white max-h-45 w-3/4 max-w-37.5 -translate-x-1/2 -translate-y-1/2 overflow-auto overflow-x-hidden z-50'
+          'fixed top-1/2 left-1/2 flex flex-col bg-white max-h-45 w-3/4 max-w-[600px] -translate-x-1/2 -translate-y-1/2 overflow-auto overflow-x-hidden z-50'
         )}
       >
         {title ? (

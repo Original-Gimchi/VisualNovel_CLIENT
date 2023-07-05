@@ -1,7 +1,8 @@
-import Header from '@/components/Header';
-import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
-import { RecoilRoot } from 'recoil';
+import Header from "@/components/Header";
+import Modal from "@/components/atoms/Modal";
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { RecoilRoot } from "recoil";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -9,6 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <Header />
         <Component {...pageProps} />
+        <Modal />
       </RecoilRoot>
     </>
   );
