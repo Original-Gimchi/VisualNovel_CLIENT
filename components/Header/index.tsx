@@ -23,7 +23,7 @@ export default function Header() {
           자기소개서 작성
         </li>
         <li className="cursor-pointer">가입 정보</li>
-        {Storage.getItem("ACCESS_TOKEN") ? (
+        {!Storage.getItem("ACCESS_TOKEN") ? (
           <>
             <li
               className="cursor-pointer p-1 bg-primary text-white"
