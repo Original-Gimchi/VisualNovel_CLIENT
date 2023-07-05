@@ -97,15 +97,6 @@ const Company = () => {
               자세히보기 {">"}
             </span>
           </div>
-          {/* <Category.Group
-            categorys={[
-              "산업자동화",
-              "데이터획득",
-              "제어솔루션",
-              "센서기술",
-              "실험연구",
-            ]}
-          /> */}
           <p className="text-[14px] mt-[12px]">
             {foundCompany.oneLineIntroduce}
           </p>

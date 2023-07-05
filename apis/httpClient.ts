@@ -71,6 +71,13 @@ export class HttpClient {
     });
   }
 
+  auto(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.put("/auto", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   search(data: unknown, requestConfig?: AxiosRequestConfig) {
     return this.api.post("/search", data, {
       ...HttpClient.clientConfig,
@@ -147,4 +154,5 @@ export default {
   wordcloud: new HttpClient("/api/wordcloud", axiosConfig),
   auth: new HttpClient("/api/auth", axiosConfig),
   jaso: new HttpClient("/api/jaso", axiosConfig),
+  jasoUpdate: new HttpClient("/api/jaso/update", axiosConfig),
 };
