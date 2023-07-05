@@ -2,7 +2,9 @@ import Button from "@/components/atoms/Button";
 import Category from "@/components/atoms/Category";
 import Frame from "@/components/atoms/Frame";
 import Input from "@/components/atoms/Input";
+import PlusInput from "@/components/atoms/PlusInput";
 import ThinkingIcon from "@/components/icons/ThinkingIcon";
+import { useState } from "react";
 
 export default function CoverLetter() {
   const categorys = [
@@ -11,6 +13,8 @@ export default function CoverLetter() {
     "경영·사무·금융",
     "경영·사무·금융",
   ];
+
+  const [stackList, setStackList] = useState<string[]>([]);
 
   return (
     <Frame>
@@ -21,14 +25,15 @@ export default function CoverLetter() {
         </div>
         <h3 className="text-xl font-black">지원자 정보</h3>
         <Input label="지원회사" placeholder="지원 회사를 기입해주세요." />
-
         <div>
           <p className="mb-2">직무/직종</p>
           <Category.Group categorys={categorys} />
         </div>
-        <Input
-          label="기술 스택/보유 능력"
+        <PlusInput
+          stackList={stackList}
+          setStackList={setStackList}
           placeholder="지원 회사를 기입해주세요."
+          label="기술 스택/보유 능력"
         />
 
         <div className="flex flex-col gap-4">
@@ -43,7 +48,6 @@ export default function CoverLetter() {
             placeholder="ex) 저의 장점은 밝은 성격입니다. 회사에 일하며 항상 밝은 분위기를 이끌어나가겠습니다."
           />
         </div>
-
         <div className="flex flex-col gap-5 items-center my-5">
           <Button className="px-8">+</Button>
           <Button>완료하기</Button>
