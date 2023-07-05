@@ -1,4 +1,4 @@
-export default function ClipboardIcon() {
+export default function ClipboardIcon({ ...props }) {
   return (
     <svg
       width="15"
@@ -7,6 +7,7 @@ export default function ClipboardIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
     >
       <rect width="15" height="18" fill="url(#pattern0)" />
       <defs>

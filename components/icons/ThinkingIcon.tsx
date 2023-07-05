@@ -1,4 +1,4 @@
-export default function ThinkingIcon() {
+export default function ThinkingIcon({ ...props }) {
   return (
     <svg
       width="43"
@@ -7,6 +7,7 @@ export default function ThinkingIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
     >
       <g clipPath="url(#clip0_37_111)">
         <rect width="43" height="43" fill="url(#pattern0)" />
