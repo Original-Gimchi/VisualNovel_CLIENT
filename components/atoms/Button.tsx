@@ -16,6 +16,7 @@ export default function Button({
     <button
       className={classNames(
         "px-20 py-3 bg-secondary text-white rounded-full whitespace-nowrap",
+        { "cursor-not-allowed !bg-disabled !text-gray-400": disabled },
         className
       )}
       {...props}
