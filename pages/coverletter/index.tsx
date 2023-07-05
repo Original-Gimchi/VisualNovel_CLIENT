@@ -6,6 +6,7 @@ import Input from "@/components/atoms/Input";
 import PlusInput from "@/components/atoms/PlusInput";
 import ThinkingIcon from "@/components/icons/ThinkingIcon";
 import { getKoreanDate } from "@/utils/date";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function CoverLetter() {
@@ -13,13 +14,12 @@ export default function CoverLetter() {
   const [oneLineIntroduce, setOneLineIntroduce] = useState("");
   const [jaso, setJaso] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const router = useRouter();
 
   const handleSave = () => {
-    httpClient.jaso.save({
-      title: `${companyName} 자기소개서 (${getKoreanDate(new Date())})`,
-      oneLineIntroduce,
-      jaso,
-    });
+    setTimeout(() => {
+      router.push("/coverletter/result");
+    }, 800);
   };
 
   return (

@@ -3,7 +3,7 @@ import Button from "@/components/atoms/Button";
 import Frame from "@/components/atoms/Frame";
 import TextArea from "@/components/atoms/TextArea";
 import ThinkingIcon from "@/components/icons/ThinkingIcon";
-import { coverLetterState } from "@/store/coverletter.store";
+import { coverLetterState } from "@/store/coverLetter.store";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
@@ -17,7 +17,7 @@ export default function CoverLetterEdit() {
   const handleClick = () => {
     httpClient.jasoUpdate.auto({ content }).then((r) => {
       setCoverLetter(r.data);
-      router.push("/coverletter/result");
+      router.push("/coverletter/edit/result");
     });
   };
 
