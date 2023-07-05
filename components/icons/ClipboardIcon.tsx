@@ -9,10 +9,10 @@ export default function ClipboardIcon({ ...props }) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
-      <rect width="15" height="18" fill="url(#pattern0)" />
+      <rect width="15" height="18" fill="url(#dqwdjoqiwjdoqwjdo)" />
       <defs>
         <pattern
-          id="pattern0"
+          id="dqwdjoqiwjdoqwjdo"
           patternContentUnits="objectBoundingBox"
           width="1"
           height="1"
