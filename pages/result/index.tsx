@@ -20,7 +20,7 @@ export default function Result() {
   ];
   return (
     <Frame>
-      <div className="flex flex-col gap-9 mt-9">
+      <div className="flex flex-col gap-9 my-9">
         <div>
           <div className="flex items-center gap-4 text-4xl font-black">
             <ThinkingIcon />
