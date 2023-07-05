@@ -13,7 +13,7 @@ function Chip({ className, disabled = false, ...props }: CategoryProps) {
         boxShadow: "0 0 4px 0 rgba(0, 0, 0, 0.1)",
       }}
       className={classNames(
-        "px-[12px] py-[4px] rounded-[999px] bg-black-500 bg-white whitespace-nowrap",
+        "px-4 py-2 rounded-[999px] bg-black-500 bg-white whitespace-nowrap",
         "text-[12px] font-[600] text-[gray]",
         className
       )}

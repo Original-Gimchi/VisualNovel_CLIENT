@@ -1,4 +1,5 @@
 import Button from "@/components/atoms/Button";
+import Category from "@/components/atoms/Category";
 import Frame from "@/components/atoms/Frame";
 import TextArea from "@/components/atoms/TextArea";
 import ThinkingIcon from "@/components/icons/ThinkingIcon";
@@ -16,6 +17,19 @@ export default function Result() {
             자기소개서 작성 시작하기 망설여졌나요? 이젠 똑똑한 인공지능 JASO가
             도와드릴게요!
           </div>
+        </div>
+        <div>
+          <p className="mb-2">회사가 원하는 해시태그</p>
+          <Category.Group
+            categorys={[
+              "테스트",
+              "테스트",
+              "테스트",
+              "테스트",
+              "테스트",
+              "테스트",
+            ]}
+          />
         </div>
         <TextArea label="나의 이력서" isClipBoard />
         <TextArea label="구글과 나" isClipBoard />
