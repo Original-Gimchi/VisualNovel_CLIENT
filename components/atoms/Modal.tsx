@@ -34,7 +34,7 @@ function ModalView({ title, content, visible, onClose }: ModalViewProps) {
         )}
       >
         {title ? (
-          <div className="flex justify-between items-center w-full px-6 py-5 h-16 border-b-0.5 border-primary-border_gray">
+          <div className="flex justify-between items-center w-full px-6 py-5 h-16 border-b border-gray-300">
             <h1 className="font-bold text-xl">{title}</h1>
             <XIcon className="cursor-pointer" onClick={onClose} />
           </div>
