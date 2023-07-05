@@ -32,7 +32,7 @@ export default function Result() {
           </div>
         </div>
         <div>
-          <p className="mb-2">회사가 원하는 해시태그</p>
+          <p className="mb-2">회사가 원하는 @</p>
           <Category.Group categorys={categorys} />
         </div>
       </div>
