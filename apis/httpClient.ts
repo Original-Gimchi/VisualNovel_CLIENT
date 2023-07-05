@@ -41,6 +41,13 @@ export class HttpClient {
     });
   }
 
+  fit(requestConfig?: AxiosRequestConfig) {
+    return this.api.get("/fit", {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   post(data: unknown, requestConfig?: AxiosRequestConfig) {
     return this.api.post("", data, {
       ...HttpClient.clientConfig,
@@ -127,5 +134,6 @@ const axiosConfig: HttpClientConfig = {
 export default {
   company: new HttpClient("/api/company", axiosConfig),
   user: new HttpClient("/api/user", axiosConfig),
+  wordcloud: new HttpClient("/api/wordcloud", axiosConfig),
   auth: new HttpClient("/api/auth", axiosConfig),
 };

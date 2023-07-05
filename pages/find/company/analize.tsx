@@ -39,7 +39,10 @@ export default function Analize() {
   useEffect(() => {
     httpClient.wordcloud
       .post(
-        { content: "급구 니더 화이팅 안녕하세요 반갑습니다 테스트 이창보 화이팅" },
+        {
+          content:
+            "급구 니더 화이팅 안녕하세요 반갑습니다 테스트 이창보 화이팅",
+        },
         {
           baseURL: "http://192.168.10.253:8001/wordcloud",
         }
