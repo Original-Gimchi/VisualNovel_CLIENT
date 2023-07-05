@@ -11,10 +11,7 @@ export default function Home() {
         placeholder="지원 회사를 기입해주세요"
         label="지원회사"
       />
-      <div>
-        ㅇㅇ
-      </div>
-      <TextArea placeholder="엄" isClipBoard />
+      <TextArea id="textarea" placeholder="엄" isClipBoard label="안녕하세요" />
     </div>
   );
 }
