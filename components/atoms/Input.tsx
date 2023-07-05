@@ -1,18 +1,22 @@
 import classNames from "classnames";
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, RefObject, useRef, useState } from "react";
+import ClipboardIcon from "../icons/ClipboardIcon";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  tag?: "input" | "textarea";
   label: string;
+  isClipboard?: boolean;
 }
 
 export default function Input({
   id,
-  tag = "input",
   label,
+  isClipboard = false,
   className,
   ...props
 }: InputProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
     <div>
       <label htmlFor={id} className="">
@@ -20,11 +24,10 @@ export default function Input({
       </label>
       <input
         id={id}
+        ref={inputRef}
         className={classNames(
-          "w-full p-[13.5px] mt-2",
-          {
-            // "h-48": tag === "input",
-          },
+          "w-full p-[13.5px] mt-2 rounded",
+
           className
         )}
         {...props}
