@@ -128,11 +128,12 @@ export class HttpClient {
 
 const axiosConfig: HttpClientConfig = {
   baseURL: config.baseURL,
-  timeout: 100000000,
+  timeout: 9999999999999,
 };
 
 export default {
   company: new HttpClient("/api/company", axiosConfig),
+  companyFind: new HttpClient("/api/company/find", axiosConfig),
   user: new HttpClient("/api/user", axiosConfig),
   wordcloud: new HttpClient("/api/wordcloud", axiosConfig),
   auth: new HttpClient("/api/auth", axiosConfig),

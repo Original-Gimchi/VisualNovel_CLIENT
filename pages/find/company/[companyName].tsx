@@ -7,52 +7,39 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Analize() {
-  const categorys = [
-    "인사담당자",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-    "개발싸개",
-    "웹싸개",
-  ];
-
   const router = useRouter();
-
   const [wordcloudUrl, setWordcloudUrl] = useState("");
+  const [companyInfo, setCompanyInfo] = useState({
+    keyword: [],
+    oneLineIntroduce: "",
+    allIntroduce: "",
+  });
 
   useEffect(() => {
-    if (router.isReady)
-      httpClient.wordcloud
-        .post(
-          {
-            content: router.query.companyName,
-          },
-          {
-            baseURL: "http://192.168.10.253:8001/wordcloud",
-          }
-        )
+    if (router.isReady) {
+      httpClient.companyFind
+        .get({ params: { name: router.query.companyName } })
         .then((r) => {
-          setWordcloudUrl(r.data.url);
+          console.log();
+          setCompanyInfo({
+            keyword: r.data.keyword.split(" "),
+            oneLineIntroduce: r.data.oneLineIntroduce,
+            allIntroduce: r.data.allIntroduce,
+          });
+          httpClient.wordcloud
+            .post(
+              {
+                content: r.data.keyword,
+              },
+              {
+                baseURL: "http://192.168.10.253:8001/wordcloud",
+              }
+            )
+            .then((r) => {
+              setWordcloudUrl(r.data.url);
+            });
         });
+    }
   }, [router]);
 
   return (
@@ -68,7 +55,7 @@ export default function Analize() {
         <div className="flex items-center justify-between">
           <div className="max-w-sm">
             <div className="mb-2">기업 키워드</div>
-            <Category.Group categorys={categorys} />
+            <Category.Group categorys={companyInfo.keyword} />
           </div>
           <div className="whitespace-nowrap">
             {wordcloudUrl ? (
@@ -82,15 +69,11 @@ export default function Analize() {
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-2">
             <p className="mt-6">기업 한줄소개</p>
-            <p className="p-5 bg-white">
-              어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고
-            </p>
+            <p className="p-5 bg-white">{companyInfo.oneLineIntroduce}</p>
           </div>
           <div className="flex flex-col gap-2 mt-3">
             <p className="">기업 전체소개</p>
-            <p className="p-5 bg-white">
-              어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고어쩌고
-            </p>
+            <p className="p-5 bg-white">{companyInfo.allIntroduce}</p>
           </div>
         </div>
       </div>
