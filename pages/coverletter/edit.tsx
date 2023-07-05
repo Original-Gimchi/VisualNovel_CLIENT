@@ -10,12 +10,12 @@ import { useRecoilState } from "recoil";
 
 export default function CoverLetterEdit() {
   const [content, setContent] = useState("");
-  const [coverLetter, setCoverLetter] = useRecoilState(coverLetterState);
+  const [, setCoverLetter] = useRecoilState(coverLetterState);
 
   const router = useRouter();
 
   const handleClick = () => {
-    httpClient.jaso.get().then((r) => {
+    httpClient.jasoUpdate.auto({ content }).then((r) => {
       setCoverLetter(r.data);
       router.push("/coverletter/result");
     });
@@ -25,7 +25,7 @@ export default function CoverLetterEdit() {
     <Frame>
       <div className="flex items-center gap-4 mt-9">
         <ThinkingIcon />
-        <p className="text-4xl font-black">자기소개서 첨삭 </p>
+        <p className="text-4xl font-black">자기소개서 첨삭</p>
       </div>
       <div className="mt-10">
         <TextArea
