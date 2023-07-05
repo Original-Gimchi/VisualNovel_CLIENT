@@ -3,8 +3,6 @@ import CompanyItem from '@/components/atoms/CompanyItem';
 import Image from 'next/image';
 import React from 'react';
 import Face from '@/assets/face.png';
-import Input from '@/components/atoms/Input';
-import classNames from 'classnames';
 import Button from '@/components/atoms/Button';
 
 const Company = () => {
@@ -51,9 +49,9 @@ const Company = () => {
       </div>
       <div className="flex gap-[8px] w-[40vw] flex-wrap">
         {categories.map((category, index) => (
-          <Category className="bg-white" key={category} onClick={() => removeHashtag(index)}>
+          <Category.Chip className="bg-white" key={category} onClick={() => removeHashtag(index)}>
             {category}
-          </Category>
+          </Category.Chip>
         ))}
       </div>
       <Button className="mr-auto ml-[30%] w-[220px] h-[42px] text-[14px]">찾아보기</Button>
@@ -65,7 +63,7 @@ const Company = () => {
           </div>
           <div className="flex gap-[12px]">
             {['산업자동화', '데이터획득', '제어솔루션', '센서기술', '실험연구'].map(tag => (
-              <Category key={tag}>#{tag}</Category>
+              <Category.Chip key={tag}>#{tag}</Category.Chip>
             ))}
           </div>
           <p className="text-[14px] mt-[12px]">
