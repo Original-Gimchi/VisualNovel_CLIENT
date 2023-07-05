@@ -3,10 +3,18 @@ import { useRouter } from "next/router";
 import LoginModal from "../Modal/LoginModal";
 import SignupModal from "../Modal/SignupModal";
 import { Storage } from "@/storage";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const router = useRouter();
   const { openModal } = useModal();
+
+  const [isUser, setIsUser] = useState(false);
+
+  useEffect(() => {
+    setIsUser(!!Storage.getItem("ACCESS_TOKEN"));
+  }, []);
+
   return (
     <header className="flex justify-between md:px-32 lg:px-56 xl:px-80 bg-white px-8 py-4">
       <div
@@ -23,7 +31,7 @@ export default function Header() {
           자기소개서 작성
         </li>
         <li className="cursor-pointer">가입 정보</li>
-        {!Storage.getItem("ACCESS_TOKEN") ? (
+        {!isUser ? (
           <>
             <li
               className="cursor-pointer p-1 bg-primary text-white"
