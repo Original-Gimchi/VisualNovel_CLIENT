@@ -21,7 +21,7 @@ export default function TextArea({
   return (
     <div className="relative">
       {label && (
-        <label className="text-2xl font-black mb-5" htmlFor={id}>
+        <label className="text-2xl font-black mb-5 block" htmlFor={id}>
           {label}
         </label>
       )}

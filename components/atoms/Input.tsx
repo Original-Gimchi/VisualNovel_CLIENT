@@ -23,11 +23,7 @@ export default function Input({
       <input
         id={id}
         ref={inputRef}
-        className={classNames(
-          "w-full p-[13.5px] mt-2 rounded",
-
-          className
-        )}
+        className={classNames("w-full p-[13.5px] mt-2 rounded", className)}
         {...props}
       />
     </div>
