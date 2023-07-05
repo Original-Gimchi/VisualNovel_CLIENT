@@ -18,7 +18,7 @@ export default function SignupModal() {
       className="p-6 flex flex-col gap-6"
       onSubmit={handleSubmit((signupData) => {
         httpClient.user.signup(signupData).then((r) => {
-          console.log(r);
+          console.log(r.data);
           toast.success("회원가입이 완료되었습니다.");
         });
       })}

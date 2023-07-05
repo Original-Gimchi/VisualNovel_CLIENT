@@ -69,6 +69,13 @@ export class HttpClient {
     });
   }
 
+  signin(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.post("/signin", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   delete(requestConfig?: AxiosRequestConfig) {
     return this.api.delete("", {
       ...HttpClient.clientConfig,
@@ -112,4 +119,5 @@ const axiosConfig: HttpClientConfig = {
 
 export default {
   user: new HttpClient("/api/user", axiosConfig),
+  auth: new HttpClient("/api/auth", axiosConfig),
 };
