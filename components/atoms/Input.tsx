@@ -15,10 +15,18 @@ export default function Input({
 }: InputProps) {
   return (
     <div>
-      <label htmlFor={id} className="">{label}</label>
+      <label htmlFor={id} className="">
+        {label}
+      </label>
       <input
         id={id}
-        className={classNames("w-full p-[13.5px] mt-2", {}, className)}
+        className={classNames(
+          "w-full p-[13.5px] mt-2",
+          {
+            // "h-48": tag === "input",
+          },
+          className
+        )}
         {...props}
       />
     </div>
