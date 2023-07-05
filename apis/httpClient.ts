@@ -6,7 +6,7 @@ import { Storage } from "@/storage";
 export interface HttpClientConfig {
   baseURL?: string;
   timeout?: number;
-  headers?: { Token?: string };
+  headers?: { Authorization?: string };
 }
 
 export class HttpClient {
@@ -19,7 +19,9 @@ export class HttpClient {
       ...axiosConfig,
       baseURL: `${axiosConfig.baseURL}${url}`,
     });
-    HttpClient.clientConfig = { headers: { Token: "" } };
+    HttpClient.clientConfig = {
+      headers: { Authorization: Storage.getItem("ACCESS_TOKEN") || "" },
+    };
     this.setting();
   }
 
@@ -90,6 +92,13 @@ export class HttpClient {
     });
   }
 
+  save(data: unknown, requestConfig?: AxiosRequestConfig) {
+    return this.api.post("/save", data, {
+      ...HttpClient.clientConfig,
+      ...requestConfig,
+    });
+  }
+
   delete(requestConfig?: AxiosRequestConfig) {
     return this.api.delete("", {
       ...HttpClient.clientConfig,
@@ -112,7 +121,7 @@ export class HttpClient {
     const accessToken = Storage.getItem("ACCESS_TOKEN");
     HttpClient.clientConfig.headers = {
       ...HttpClient.clientConfig.headers,
-      Token: accessToken || undefined,
+      Authorization: accessToken || undefined,
     };
   }
 
@@ -137,4 +146,5 @@ export default {
   user: new HttpClient("/api/user", axiosConfig),
   wordcloud: new HttpClient("/api/wordcloud", axiosConfig),
   auth: new HttpClient("/api/auth", axiosConfig),
+  jaso: new HttpClient("/api/jaso", axiosConfig),
 };
