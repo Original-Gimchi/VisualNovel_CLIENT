@@ -19,7 +19,7 @@ export default function CoverLetter() {
   const handleSave = () => {
     setTimeout(() => {
       router.push("/coverletter/result");
-    }, 800);
+    }, 5000);
   };
 
   return (

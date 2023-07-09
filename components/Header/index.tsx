@@ -30,7 +30,12 @@ export default function Header() {
         >
           자기소개서 작성
         </li>
-        <li className="cursor-pointer">가입 정보</li>
+        <li
+          className="cursor-pointer"
+          onClick={() => router.push("/find/company")}
+        >
+          기업 찾기
+        </li>
         {!isUser ? (
           <>
             <li
