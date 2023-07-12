@@ -31,7 +31,7 @@ export default function Analize() {
               content: r.data.keyword
             },
             {
-              baseURL: 'http://192.168.10.253:8001/wordcloud'
+              baseURL: 'http://localhost:8088/wordcloud'
             }
           )
           .then(r => {

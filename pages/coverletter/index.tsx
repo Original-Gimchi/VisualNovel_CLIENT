@@ -25,10 +25,7 @@ export default function CoverLetter() {
   const [isClick, setIsClick] = useState(false);
 
   const handleSave = async () => {
-    // setTimeout(() => {
-    //   router.push('/coverletter/result');
-    // }, 5000);
-    console.log(1);
+    setIsClick(true);
 
     const res = await axios.post('http://localhost:8088/api/jaso/create', {
       company: companyName,
@@ -39,7 +36,6 @@ export default function CoverLetter() {
       experience: jaso,
       max: 500
     });
-    setIsClick(true);
     Storage.setItem('coverletterrrrrr', res.data);
     router.push('/coverletter/result');
   };
