@@ -1,23 +1,23 @@
-import httpClient from "@/apis";
-import Button from "@/components/atoms/Button";
-import Frame from "@/components/atoms/Frame";
-import TextArea from "@/components/atoms/TextArea";
-import ThinkingIcon from "@/components/icons/ThinkingIcon";
-import { coverLetterState } from "@/store/coverLetter.store";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useRecoilState } from "recoil";
+import httpClient from '@/apis';
+import Button from '@/components/atoms/Button';
+import Frame from '@/components/atoms/Frame';
+import TextArea from '@/components/atoms/TextArea';
+import ThinkingIcon from '@/components/icons/ThinkingIcon';
+import { coverLetterState } from '@/store/coverLetter.store';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 export default function CoverLetterEdit() {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [, setCoverLetter] = useRecoilState(coverLetterState);
 
   const router = useRouter();
 
   const handleClick = () => {
-    httpClient.jasoUpdate.auto({ content }).then((r) => {
+    httpClient.jasoUpdate.auto({ content }).then(r => {
       setCoverLetter(r.data);
-      router.push("/coverletter/edit/result");
+      router.push('/coverletter/edit/result');
     });
   };
 
@@ -31,7 +31,7 @@ export default function CoverLetterEdit() {
         <TextArea
           placeholder="자기소개서를 입력해주세요."
           className="h-96"
-          onChange={(e) => setContent(e.target.value)}
+          onChange={e => setContent(e.target.value)}
         />
       </div>
 
